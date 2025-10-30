@@ -14,6 +14,7 @@ from nautilus_trader.backtest.engine import BacktestEngine, BacktestEngineConfig
 from nautilus_trader.backtest.node import BacktestNode
 from nautilus_trader.config import ImportableStrategyConfig
 from nautilus_trader.model.currencies import USD, USDT, EUR, BTC, ETH
+from nautilus_trader.model.enums import AccountType, OmsType
 from nautilus_trader.model.identifiers import Venue
 from nautilus_trader.model.objects import Currency, Money
 from nautilus_trader.persistence.catalog import ParquetDataCatalog
@@ -146,10 +147,21 @@ class BacktestRunner:
 
                 starting_balances.append(Money(amount, currency))
 
+            # Map account type string to enum
+            account_type_map = {
+                "CASH": AccountType.CASH,
+                "MARGIN": AccountType.MARGIN,
+                "BETTING": AccountType.BETTING,
+            }
+            account_type = account_type_map.get(
+                self.config.venue.account_type.upper(),
+                AccountType.CASH  # Default to CASH
+            )
+
             self.engine.add_venue(
                 venue=venue,
-                oms_type="NETTING",  # or "HEDGING"
-                account_type=self.config.venue.account_type,
+                oms_type=OmsType.NETTING,  # Use enum instead of string
+                account_type=account_type,
                 base_currency=None,  # Will use venue default
                 starting_balances=starting_balances,
             )
