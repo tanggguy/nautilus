@@ -101,11 +101,19 @@ class DataDownloader:
             # Reset index to make timestamp a column
             df = df.reset_index()
 
+            # Clean column names again after reset_index (in case index name has different case)
+            df.columns = [col.lower() for col in df.columns]
+
             # Rename columns to match Nautilus format
             if "date" in df.columns:
                 df = df.rename(columns={"date": "timestamp"})
             elif "datetime" in df.columns:
                 df = df.rename(columns={"datetime": "timestamp"})
+
+            # Verify timestamp column exists
+            if "timestamp" not in df.columns:
+                logger.error(f"Could not create timestamp column. Available columns: {df.columns.tolist()}")
+                return None
 
             logger.info(f"Downloaded {len(df)} bars for {symbol}")
             logger.info(
