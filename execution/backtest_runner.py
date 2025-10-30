@@ -136,17 +136,19 @@ class BacktestRunner:
             # Create starting balances with proper Currency objects
             starting_balances = []
             for currency_str, amount in self.config.venue.starting_balances.items():
-                # Try to get from map, otherwise create from string
-                currency = currency_map.get(currency_str.upper())
+                currency_code = currency_str.upper()
+                currency = currency_map.get(currency_code)
                 if currency is None:
-                    # Create currency from string if not in map
                     try:
-                        currency = Currency.from_str(currency_str.upper())
-                    except Exception as e:
-                        logger.warning(f"Could not create currency {currency_str}: {e}")
-                        # Default to USDT
-                        currency = USDT
-
+                        currency = Currency.from_str(currency_code)
+                    except (
+                        ValueError
+                    ) as e:  # Assuming ValueError, adjust if Currency.from_str raises something else
+                        logger.error(
+                            f"Invalid currency '{currency_str}' in configuration. Please check your backtest config.",
+                            exc_info=True,
+                        )
+                        raise e
                 starting_balances.append(Money(amount, currency))
 
             self.engine.add_venue(
@@ -154,10 +156,6 @@ class BacktestRunner:
                 oms_type="NETTING",  # or "HEDGING"
                 account_type=self.config.venue.account_type,
                 base_currency=None,  # Will use venue default
-                starting_balances=[
-                    Money(amount, Currency)
-                    for currency, amount in self.config.venue.starting_balances.items()
-                ],
                 starting_balances=starting_balances,
             )
 

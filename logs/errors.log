@@ -434,3 +434,64 @@ Traceback (most recent call last):
     Money(amount, Currency)
     ~~~~~^^^^^^^^^^^^^^^^^^
 TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:12:35 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:12:35 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:14:29 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:14:29 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:20:31 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 154, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        starting_balances=starting_balances,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 21:20:31 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 154, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        starting_balances=starting_balances,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
