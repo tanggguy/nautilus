@@ -275,3 +275,1039 @@ Traceback (most recent call last):
     raise KeyError(key) from err
 KeyError: 'timestamp'
 2025-10-30 17:12:38 | ERROR    | __main__                       | main                 | Failed to download data. Exiting.
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:17:01 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:17:02 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | NAUTILUS TRADING PLATFORM - COMPLETE BACKTEST EXAMPLE
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | STEP 1: DOWNLOADING HISTORICAL DATA
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:02 | INFO     | scripts.data_download          | __init__             | DataDownloader initialized | Output: data
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | Downloading BTC-USD from 2024-01-01 to 2024-03-01
+2025-10-30 17:17:02 | INFO     | __main__                       | main                 | Interval: 1h
+2025-10-30 17:17:02 | INFO     | scripts.data_download          | download_yahoo_finance | Downloading BTC-USD from Yahoo Finance
+2025-10-30 17:17:02 | INFO     | scripts.data_download          | download_yahoo_finance | Period: 2024-01-01 to 2024-03-01 | Interval: 1h
+2025-10-30 17:17:03 | INFO     | scripts.data_download          | download_yahoo_finance | Downloaded 1440 bars for BTC-USD
+2025-10-30 17:17:03 | INFO     | scripts.data_download          | download_yahoo_finance | Date range: 2024-01-01 00:00:00+00:00 to 2024-02-29 23:00:00+00:00
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ✅ Downloaded 1,440 bars
+2025-10-30 17:17:03 | INFO     | scripts.data_download          | save_to_parquet      | Saving data to: data\yahoo_btcusd_1h.parquet
+2025-10-30 17:17:03 | INFO     | scripts.data_download          | save_to_parquet      | Saved successfully | Size: 0.06 MB | Rows: 1440
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ✅ Data saved to: data\yahoo_btcusd_1h.parquet
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | STEP 2: VALIDATING DATA QUALITY
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | validate_file        | ================================================================================
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | validate_file        | VALIDATING: yahoo_btcusd_1h.parquet
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | validate_file        | ================================================================================
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _load_data           | Loaded 1,440 rows
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _validate_columns    | ✅ All required columns present
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _validate_timestamps | ✅ Timestamps sorted correctly
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _validate_ohlc_relationships | ✅ OHLC relationships valid
+2025-10-30 17:17:03 | WARNING  | scripts.data_validation        | _validate_volume     | ⚠️ Zero volume: 705 rows (48.96%)
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _validate_volume     | ✅ Volume data valid
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _check_for_gaps      | ✅ No time gaps detected
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _detect_outliers     | ✅ No significant outliers detected
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _check_duplicates    | ✅ No duplicate timestamps
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | ================================================================================
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | VALIDATION SUMMARY
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | ================================================================================
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | Total Rows     : 1,440
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | Critical Issues: 0
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | Errors         : 0
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | Warnings       : 1
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | ✅ DATA VALIDATION PASSED
+2025-10-30 17:17:03 | INFO     | scripts.data_validation        | _generate_report     | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ✅ Data validation passed!
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Total rows: 1,440
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Date range: 2024-01-01 00:00:00+00:00 to 2024-02-29 23:00:00+00:00
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Warnings: 1
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | STEP 3: CONFIGURING BACKTEST
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Venue: BINANCE
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Starting capital: $10,000.00
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Instrument: BTCUSDT
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Data period: 2024-01-01 to 2024-03-01
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Risk: 2.0% stop loss, 4.0% take profit
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Fees: 0.10% maker, 0.10% taker
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ✅ Backtest configuration created
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | STEP 4: CONFIGURING STRATEGY
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Strategy: EMA Cross
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Fast EMA: 10 periods
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Slow EMA: 30 periods
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Trade size: $1000
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ✅ Strategy configuration created
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | STEP 5: RUNNING BACKTEST
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Note: Actual backtest execution requires NautilusTrader to be installed
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |       and properly configured with historical data.
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | To run the backtest, you would use:
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   from execution.backtest_runner import run_simple_backtest
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   results = run_simple_backtest(
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |       backtest_config=backtest_config,
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |       strategy_class=EMACrossStrategy,
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |       strategy_config=strategy_config,
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   )
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 📊 SIMULATED RESULTS (for demonstration):
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | --------------------------------------------------------------------------------
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Starting Balance  : $10,000.00
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Ending Balance    : $11,234.56
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Total P&L         : $1,234.56 (+12.35%)
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Total Trades      : 15
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Winning Trades    : 9
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Losing Trades     : 6
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Win Rate          : 60.00%
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Bars Processed    : 1,440
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | STEP 6: ALTERNATIVE - USING CLI
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Instead of the Python API, you can use the CLI tool:
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   python scripts/run_backtest.py \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --strategy ema_cross \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --symbol BTCUSDT \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --start 2024-01-01 \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --end 2024-03-01 \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --interval 1h \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --capital 10000 \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --trade-size 1000 \
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |     --params fast_period=10 slow_period=30
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | EXAMPLE COMPLETED!
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | What we did:
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   ✅ Downloaded historical Bitcoin data from Yahoo Finance
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   ✅ Validated data quality (OHLCV relationships, gaps, outliers)
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   ✅ Configured backtest with venue, instruments, risk management
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   ✅ Configured EMA Cross strategy with parameters
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   ✅ Showed how to run backtest (Python API and CLI)
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | Next steps:
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   1. Install NautilusTrader: pip install nautilus_trader
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   2. Run actual backtest with your data
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   3. Analyze results with Phase 4 metrics (coming soon)
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   4. Optimize parameters with Phase 5 (Optuna)
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 |   5. Test in paper trading before going live
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | 
+2025-10-30 17:17:03 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 17:18:37 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 17:18:37 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 17:18:37 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 17:18:37 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:18:37 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 17:18:37 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 17:18:37 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:18:37 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 17:18:37 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 17:19:14 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 17:19:14 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 17:19:14 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 17:19:14 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:19:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 17:19:14 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 17:19:14 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:19:14 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 17:19:14 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:21:51 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:21:51 | INFO     | __main__                       | __init__             | DataDownloader initialized | Output: data
+2025-10-30 17:21:51 | INFO     | __main__                       | download_yahoo_finance | Downloading APPL from Yahoo Finance
+2025-10-30 17:21:51 | INFO     | __main__                       | download_yahoo_finance | Period: 2024-01-01 to 2024-03-01 | Interval: 1h
+2025-10-30 17:21:52 | ERROR    | yfinance                       | history              | $APPL: possibly delisted; no price data found  (1h 2024-01-01 -> 2024-03-01)
+2025-10-30 17:21:52 | ERROR    | __main__                       | download_yahoo_finance | No data returned for APPL
+2025-10-30 17:21:52 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:22:43 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:22:43 | INFO     | __main__                       | __init__             | DataDownloader initialized | Output: data
+2025-10-30 17:22:43 | INFO     | __main__                       | download_yahoo_finance | Downloading AIR.PA from Yahoo Finance
+2025-10-30 17:22:43 | INFO     | __main__                       | download_yahoo_finance | Period: 2024-01-01 to 2024-03-01 | Interval: 1h
+2025-10-30 17:22:44 | INFO     | __main__                       | download_yahoo_finance | Downloaded 387 bars for AIR.PA
+2025-10-30 17:22:44 | INFO     | __main__                       | download_yahoo_finance | Date range: 2024-01-02 09:00:00+01:00 to 2024-02-29 17:00:00+01:00
+2025-10-30 17:22:44 | INFO     | __main__                       | save_to_parquet      | Saving data to: data\yahoo_air.pa_1h.parquet
+2025-10-30 17:22:44 | INFO     | __main__                       | save_to_parquet      | Saved successfully | Size: 0.02 MB | Rows: 387
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | DOWNLOAD COMPLETE
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | File: data\yahoo_air.pa_1h.parquet
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | Rows: 387
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | Columns: timestamp, open, high, low, close, volume, dividends, stock splits
+2025-10-30 17:22:44 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:24:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:24:21 | INFO     | __main__                       | validate_file        | ================================================================================
+2025-10-30 17:24:21 | INFO     | __main__                       | validate_file        | VALIDATING: yahoo_btcusd_1h.parquet
+2025-10-30 17:24:21 | INFO     | __main__                       | validate_file        | ================================================================================
+2025-10-30 17:24:21 | INFO     | __main__                       | _load_data           | Loaded 1,440 rows
+2025-10-30 17:24:21 | INFO     | __main__                       | _validate_columns    | ✅ All required columns present
+2025-10-30 17:24:21 | INFO     | __main__                       | _validate_timestamps | ✅ Timestamps sorted correctly
+2025-10-30 17:24:21 | INFO     | __main__                       | _validate_ohlc_relationships | ✅ OHLC relationships valid
+2025-10-30 17:24:21 | WARNING  | __main__                       | _validate_volume     | ⚠️ Zero volume: 705 rows (48.96%)
+2025-10-30 17:24:21 | INFO     | __main__                       | _validate_volume     | ✅ Volume data valid
+2025-10-30 17:24:21 | INFO     | __main__                       | _check_for_gaps      | ✅ No time gaps detected
+2025-10-30 17:24:21 | INFO     | __main__                       | _detect_outliers     | ✅ No significant outliers detected
+2025-10-30 17:24:21 | INFO     | __main__                       | _check_duplicates    | ✅ No duplicate timestamps
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | ================================================================================
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | VALIDATION SUMMARY
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | ================================================================================
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | Total Rows     : 1,440
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | Critical Issues: 0
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | Errors         : 0
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | Warnings       : 1
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | ✅ DATA VALIDATION PASSED
+2025-10-30 17:24:21 | INFO     | __main__                       | _generate_report     | ================================================================================
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 17:26:16 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 17:26:16 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 17:26:16 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 17:26:16 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:26:16 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 17:26:16 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 17:26:16 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:26:16 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 17:26:16 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 17:55:42 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 17:55:42 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 17:55:42 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 17:55:42 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:55:42 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 17:55:42 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 17:55:42 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:55:42 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 17:55:42 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:00:41 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:00:41 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:00:41 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:00:41 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:00:41 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:00:41 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:00:41 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: 'dict' object has no attribute 'clear_log_file'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 122, in initialize_engine
+    self.engine = BacktestEngine(config=engine_config)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "nautilus_trader/backtest/engine.pyx", line 250, in nautilus_trader.backtest.engine.BacktestEngine.__init__
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\nautilus_trader\system\kernel.py", line 179, in __init__
+    if logging.clear_log_file and logging.log_directory and logging.log_file_name:
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'clear_log_file'
+2025-10-30 18:00:41 | ERROR    | __main__                       | main                 | Backtest failed: 'dict' object has no attribute 'clear_log_file'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 122, in initialize_engine
+    self.engine = BacktestEngine(config=engine_config)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "nautilus_trader/backtest/engine.pyx", line 250, in nautilus_trader.backtest.engine.BacktestEngine.__init__
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\nautilus_trader\system\kernel.py", line 179, in __init__
+    if logging.clear_log_file and logging.log_directory and logging.log_file_name:
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'clear_log_file'
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:00:41 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:07:44 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:07:44 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:07:44 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:07:44 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:07:44 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:07:44 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:07:44 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:07:44 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:07:44 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:09:35 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:09:35 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:09:35 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:09:35 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:09:35 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:09:35 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:09:35 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:09:35 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:09:35 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:18:03 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:18:04 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:18:04 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:18:04 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:18:04 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:18:04 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:18:04 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:18:04 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:18:04 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:18:04 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:20:45 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:20:45 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:20:45 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:20:45 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:20:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:20:45 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:20:45 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 18:20:45 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:20:45 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:23:14 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:23:14 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:23:14 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:23:14 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:23:14 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:23:14 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:23:14 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:23:15 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: __init__() takes exactly 5 positional arguments (1 given)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency(currency))
+                  ~~~~~~~~^^^^^^^^^^
+  File "nautilus_trader/model/objects.pyx", line 1394, in nautilus_trader.model.objects.Currency.__init__
+TypeError: __init__() takes exactly 5 positional arguments (1 given)
+2025-10-30 18:23:15 | ERROR    | __main__                       | main                 | Backtest failed: __init__() takes exactly 5 positional arguments (1 given)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency(currency))
+                  ~~~~~~~~^^^^^^^^^^
+  File "nautilus_trader/model/objects.pyx", line 1394, in nautilus_trader.model.objects.Currency.__init__
+TypeError: __init__() takes exactly 5 positional arguments (1 given)
+2025-10-30 18:23:15 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:23:15 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 18:24:28 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 18:24:28 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 18:24:28 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 18:24:28 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 18:24:28 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 18:24:28 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 18:24:28 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 18:24:29 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:24:29 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:24:29 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 18:24:29 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 19:33:31 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 19:33:31 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 19:33:31 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 19:33:31 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 19:33:31 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 19:33:31 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 19:33:31 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 19:33:32 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 19:33:32 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 19:33:32 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 19:33:32 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 19:35:26 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 19:35:26 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 19:35:26 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 19:35:26 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 19:35:26 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 19:35:26 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 19:35:26 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 19:35:28 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 19:35:28 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 19:35:28 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 19:35:28 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 20:37:25 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 20:37:25 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 20:37:25 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 20:37:25 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 20:37:25 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 20:37:25 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 20:37:25 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 20:37:27 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 20:37:27 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 20:37:27 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 20:37:27 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 21:04:21 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 21:04:21 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 21:04:21 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 21:04:21 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 21:04:21 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 21:04:21 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 21:04:21 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 21:04:23 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:04:23 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:04:23 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 21:04:23 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete

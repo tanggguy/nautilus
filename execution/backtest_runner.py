@@ -17,7 +17,8 @@ from nautilus_trader.model.currencies import USD
 from nautilus_trader.model.identifiers import Venue
 from nautilus_trader.model.objects import Money
 from nautilus_trader.persistence.catalog import ParquetDataCatalog
-
+from nautilus_trader.config import LoggingConfig
+from nautilus_trader.model.objects import Currency
 from configs.backtest_config import BacktestConfig
 from utils.logging_config import get_logger, setup_logging
 
@@ -77,7 +78,9 @@ class BacktestRunner:
         logger.info(f"Instruments: {[i.symbol for i in config.instruments]}")
         logger.info(f"Period: {config.data.start_date} to {config.data.end_date}")
 
-    def initialize_catalog(self, catalog_path: Optional[Path] = None) -> ParquetDataCatalog:
+    def initialize_catalog(
+        self, catalog_path: Optional[Path] = None
+    ) -> ParquetDataCatalog:
         """
         Initialize data catalog for loading historical data.
 
@@ -113,7 +116,7 @@ class BacktestRunner:
             # Create engine configuration
             engine_config = BacktestEngineConfig(
                 trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
-                logging_config={"bypass": False},  # Use our logging
+                logging=LoggingConfig(log_level="ERROR"),
             )
 
             # Create engine
@@ -127,7 +130,7 @@ class BacktestRunner:
                 account_type=self.config.venue.account_type,
                 base_currency=None,  # Will use venue default
                 starting_balances=[
-                    Money(amount, currency)
+                    Money(amount, Currency)
                     for currency, amount in self.config.venue.starting_balances.items()
                 ],
             )
@@ -214,7 +217,9 @@ class BacktestRunner:
             Dictionary containing backtest results.
         """
         if self.engine is None:
-            raise RuntimeError("Engine not initialized. Call initialize_engine() first.")
+            raise RuntimeError(
+                "Engine not initialized. Call initialize_engine() first."
+            )
 
         logger.info("=" * 80)
         logger.info("STARTING BACKTEST")

@@ -13,6 +13,8 @@ This script validates historical market data quality:
 import argparse
 import sys
 from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 from typing import Dict, List, Tuple
 
 import numpy as np
@@ -111,12 +113,14 @@ class DataValidator:
         missing = [col for col in required if col not in df.columns]
 
         if missing:
-            self.issues.append({
-                "type": "missing_columns",
-                "severity": "critical",
-                "message": f"Missing required columns: {missing}",
-                "columns": missing,
-            })
+            self.issues.append(
+                {
+                    "type": "missing_columns",
+                    "severity": "critical",
+                    "message": f"Missing required columns: {missing}",
+                    "columns": missing,
+                }
+            )
             logger.error(f"❌ Missing columns: {missing}")
         else:
             logger.info("✅ All required columns present")
@@ -130,28 +134,34 @@ class DataValidator:
         if not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
             try:
                 df["timestamp"] = pd.to_datetime(df["timestamp"])
-                self.warnings.append({
-                    "type": "timestamp_conversion",
-                    "severity": "warning",
-                    "message": "Timestamps converted to datetime",
-                })
+                self.warnings.append(
+                    {
+                        "type": "timestamp_conversion",
+                        "severity": "warning",
+                        "message": "Timestamps converted to datetime",
+                    }
+                )
                 logger.warning("⚠️ Timestamps converted to datetime")
             except Exception as e:
-                self.issues.append({
-                    "type": "invalid_timestamps",
-                    "severity": "critical",
-                    "message": f"Failed to parse timestamps: {e}",
-                })
+                self.issues.append(
+                    {
+                        "type": "invalid_timestamps",
+                        "severity": "critical",
+                        "message": f"Failed to parse timestamps: {e}",
+                    }
+                )
                 logger.error(f"❌ Invalid timestamps: {e}")
                 return
 
         # Check if timestamps are sorted
         if not df["timestamp"].is_monotonic_increasing:
-            self.issues.append({
-                "type": "unsorted_timestamps",
-                "severity": "error",
-                "message": "Timestamps are not sorted",
-            })
+            self.issues.append(
+                {
+                    "type": "unsorted_timestamps",
+                    "severity": "error",
+                    "message": "Timestamps are not sorted",
+                }
+            )
             logger.error("❌ Timestamps not sorted")
         else:
             logger.info("✅ Timestamps sorted correctly")
@@ -164,34 +174,38 @@ class DataValidator:
 
         # High should be >= all other prices
         high_violations = (
-            (df["high"] < df["open"]) |
-            (df["high"] < df["low"]) |
-            (df["high"] < df["close"])
+            (df["high"] < df["open"])
+            | (df["high"] < df["low"])
+            | (df["high"] < df["close"])
         ).sum()
 
         # Low should be <= all other prices
         low_violations = (
-            (df["low"] > df["open"]) |
-            (df["low"] > df["high"]) |
-            (df["low"] > df["close"])
+            (df["low"] > df["open"])
+            | (df["low"] > df["high"])
+            | (df["low"] > df["close"])
         ).sum()
 
         if high_violations > 0:
-            self.issues.append({
-                "type": "ohlc_violation",
-                "severity": "error",
-                "message": f"High price violations: {high_violations} rows",
-                "count": int(high_violations),
-            })
+            self.issues.append(
+                {
+                    "type": "ohlc_violation",
+                    "severity": "error",
+                    "message": f"High price violations: {high_violations} rows",
+                    "count": int(high_violations),
+                }
+            )
             logger.error(f"❌ High price violations: {high_violations} rows")
 
         if low_violations > 0:
-            self.issues.append({
-                "type": "ohlc_violation",
-                "severity": "error",
-                "message": f"Low price violations: {low_violations} rows",
-                "count": int(low_violations),
-            })
+            self.issues.append(
+                {
+                    "type": "ohlc_violation",
+                    "severity": "error",
+                    "message": f"Low price violations: {low_violations} rows",
+                    "count": int(low_violations),
+                }
+            )
             logger.error(f"❌ Low price violations: {low_violations} rows")
 
         if high_violations == 0 and low_violations == 0:
@@ -205,25 +219,29 @@ class DataValidator:
         # Check for negative volume
         negative_volume = (df["volume"] < 0).sum()
         if negative_volume > 0:
-            self.issues.append({
-                "type": "negative_volume",
-                "severity": "error",
-                "message": f"Negative volume: {negative_volume} rows",
-                "count": int(negative_volume),
-            })
+            self.issues.append(
+                {
+                    "type": "negative_volume",
+                    "severity": "error",
+                    "message": f"Negative volume: {negative_volume} rows",
+                    "count": int(negative_volume),
+                }
+            )
             logger.error(f"❌ Negative volume: {negative_volume} rows")
 
         # Check for zero volume
         zero_volume = (df["volume"] == 0).sum()
         if zero_volume > 0:
             pct = (zero_volume / len(df)) * 100
-            self.warnings.append({
-                "type": "zero_volume",
-                "severity": "warning",
-                "message": f"Zero volume: {zero_volume} rows ({pct:.2f}%)",
-                "count": int(zero_volume),
-                "percentage": pct,
-            })
+            self.warnings.append(
+                {
+                    "type": "zero_volume",
+                    "severity": "warning",
+                    "message": f"Zero volume: {zero_volume} rows ({pct:.2f}%)",
+                    "count": int(zero_volume),
+                    "percentage": pct,
+                }
+            )
             logger.warning(f"⚠️ Zero volume: {zero_volume} rows ({pct:.2f}%)")
 
         if negative_volume == 0:
@@ -249,14 +267,16 @@ class DataValidator:
 
         if gap_count > 0:
             gap_pct = (gap_count / len(df)) * 100
-            self.warnings.append({
-                "type": "time_gaps",
-                "severity": "warning",
-                "message": f"Time gaps detected: {gap_count} gaps ({gap_pct:.2f}%)",
-                "count": int(gap_count),
-                "percentage": gap_pct,
-                "expected_interval": str(expected_interval),
-            })
+            self.warnings.append(
+                {
+                    "type": "time_gaps",
+                    "severity": "warning",
+                    "message": f"Time gaps detected: {gap_count} gaps ({gap_pct:.2f}%)",
+                    "count": int(gap_count),
+                    "percentage": gap_pct,
+                    "expected_interval": str(expected_interval),
+                }
+            )
             logger.warning(f"⚠️ Time gaps: {gap_count} gaps ({gap_pct:.2f}%)")
         else:
             logger.info("✅ No time gaps detected")
@@ -285,15 +305,19 @@ class DataValidator:
             if outliers > 0:
                 outliers_found = True
                 pct = (outliers / len(df)) * 100
-                self.warnings.append({
-                    "type": "price_outliers",
-                    "severity": "warning",
-                    "message": f"{col.capitalize()} outliers: {outliers} ({pct:.2f}%)",
-                    "column": col,
-                    "count": int(outliers),
-                    "percentage": pct,
-                })
-                logger.warning(f"⚠️ {col.capitalize()} outliers: {outliers} ({pct:.2f}%)")
+                self.warnings.append(
+                    {
+                        "type": "price_outliers",
+                        "severity": "warning",
+                        "message": f"{col.capitalize()} outliers: {outliers} ({pct:.2f}%)",
+                        "column": col,
+                        "count": int(outliers),
+                        "percentage": pct,
+                    }
+                )
+                logger.warning(
+                    f"⚠️ {col.capitalize()} outliers: {outliers} ({pct:.2f}%)"
+                )
 
         if not outliers_found:
             logger.info("✅ No significant outliers detected")
@@ -306,12 +330,14 @@ class DataValidator:
         duplicates = df["timestamp"].duplicated().sum()
 
         if duplicates > 0:
-            self.issues.append({
-                "type": "duplicate_timestamps",
-                "severity": "error",
-                "message": f"Duplicate timestamps: {duplicates} rows",
-                "count": int(duplicates),
-            })
+            self.issues.append(
+                {
+                    "type": "duplicate_timestamps",
+                    "severity": "error",
+                    "message": f"Duplicate timestamps: {duplicates} rows",
+                    "count": int(duplicates),
+                }
+            )
             logger.error(f"❌ Duplicate timestamps: {duplicates} rows")
         else:
             logger.info("✅ No duplicate timestamps")
@@ -327,8 +353,12 @@ class DataValidator:
             "total_rows": len(df),
             "columns": list(df.columns),
             "date_range": {
-                "start": str(df["timestamp"].min()) if "timestamp" in df.columns else None,
-                "end": str(df["timestamp"].max()) if "timestamp" in df.columns else None,
+                "start": (
+                    str(df["timestamp"].min()) if "timestamp" in df.columns else None
+                ),
+                "end": (
+                    str(df["timestamp"].max()) if "timestamp" in df.columns else None
+                ),
             },
             "issues": self.issues,
             "warnings": self.warnings,
