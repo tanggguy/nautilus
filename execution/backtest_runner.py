@@ -6,7 +6,9 @@ with historical data using NautilusTrader's backtesting engine.
 """
 
 import json
+import pandas as pd
 from datetime import datetime
+from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -14,12 +16,23 @@ from nautilus_trader.backtest.engine import BacktestEngine, BacktestEngineConfig
 from nautilus_trader.backtest.node import BacktestNode
 from nautilus_trader.config import ImportableStrategyConfig
 from nautilus_trader.model.currencies import USD, USDT, EUR, BTC, ETH
-from nautilus_trader.model.enums import AccountType, OmsType
-from nautilus_trader.model.identifiers import Venue
-from nautilus_trader.model.objects import Currency, Money
+from nautilus_trader.model.data import Bar, BarSpecification, BarType
+from nautilus_trader.model.enums import (
+    AccountType,
+    OmsType,
+    AssetClass,
+    CurrencyType,
+    AggregationSource,
+    BarAggregation,
+    PriceType,
+)
+from nautilus_trader.model.identifiers import InstrumentId, Symbol, Venue
+from nautilus_trader.model.instruments import CryptoFuture, CryptoPerpetual, Equity, CurrencyPair
+from nautilus_trader.model.objects import Currency, Money, Price, Quantity
 from nautilus_trader.persistence.catalog import ParquetDataCatalog
 from nautilus_trader.config import LoggingConfig
-from nautilus_trader.model.objects import Currency
+from nautilus_trader.test_kit.providers import TestInstrumentProvider
+
 from configs.backtest_config import BacktestConfig
 from utils.logging_config import get_logger, setup_logging
 
@@ -183,45 +196,234 @@ class BacktestRunner:
             logger.error(f"Failed to initialize backtest engine: {e}", exc_info=True)
             raise
 
+    def _create_instrument(self, instrument_config) -> CurrencyPair:
+        """
+        Create a NautilusTrader instrument from configuration.
+
+        Args:
+            instrument_config: Instrument configuration.
+
+        Returns:
+            CurrencyPair instrument.
+        """
+        # Extract base and quote currencies from symbol (e.g., BTCUSDT -> BTC, USDT)
+        symbol_str = instrument_config.symbol
+
+        # For crypto pairs, typically last 3-4 chars are quote currency
+        if symbol_str.endswith("USDT"):
+            base_code = symbol_str[:-4]
+            quote_code = "USDT"
+        elif symbol_str.endswith("USD"):
+            base_code = symbol_str[:-3]
+            quote_code = "USD"
+        elif symbol_str.endswith("BTC"):
+            base_code = symbol_str[:-3]
+            quote_code = "BTC"
+        elif symbol_str.endswith("ETH"):
+            base_code = symbol_str[:-3]
+            quote_code = "ETH"
+        else:
+            # Default fallback
+            base_code = symbol_str[:3]
+            quote_code = symbol_str[3:]
+
+        # Create currencies
+        currency_map = {
+            "USD": USD,
+            "USDT": USDT,
+            "EUR": EUR,
+            "BTC": BTC,
+            "ETH": ETH,
+        }
+
+        base_currency = currency_map.get(base_code, Currency.from_str(base_code))
+        quote_currency = currency_map.get(quote_code, Currency.from_str(quote_code))
+
+        # Create instrument ID
+        instrument_id = InstrumentId(
+            symbol=Symbol(instrument_config.symbol),
+            venue=Venue(instrument_config.venue),
+        )
+
+        # Create CurrencyPair instrument
+        instrument = CurrencyPair(
+            instrument_id=instrument_id,
+            raw_symbol=Symbol(instrument_config.symbol),
+            base_currency=base_currency,
+            quote_currency=quote_currency,
+            price_precision=instrument_config.price_precision,
+            size_precision=instrument_config.size_precision,
+            price_increment=Price(10 ** -instrument_config.price_precision, instrument_config.price_precision),
+            size_increment=Quantity(10 ** -instrument_config.size_precision, instrument_config.size_precision),
+            lot_size=Quantity(instrument_config.min_quantity, instrument_config.size_precision),
+            max_quantity=None,
+            min_quantity=Quantity(instrument_config.min_quantity, instrument_config.size_precision),
+            max_price=None,
+            min_price=None,
+            margin_init=Decimal("0"),
+            margin_maint=Decimal("0"),
+            maker_fee=Decimal(str(self.config.fees.maker_fee)),
+            taker_fee=Decimal(str(self.config.fees.taker_fee)),
+            ts_event=0,
+            ts_init=0,
+        )
+
+        return instrument
+
     def load_data(self) -> None:
         """
         Load historical data into the engine.
 
-        Loads data from catalog based on configuration.
+        Loads data from Parquet files and adds instruments and bars to the engine.
         """
-        if self.catalog is None:
-            self.initialize_catalog()
-
         if self.engine is None:
             self.initialize_engine()
 
         logger.info("Loading historical data")
 
         try:
-            # Convert date strings to datetime
-            start = datetime.strptime(self.config.data.start_date, "%Y-%m-%d")
-            end = datetime.strptime(self.config.data.end_date, "%Y-%m-%d")
-
             # Load data for each instrument
             for instrument_config in self.config.instruments:
                 symbol = instrument_config.symbol
-                venue = instrument_config.venue
+                venue_name = instrument_config.venue
 
-                logger.info(f"Loading data for {symbol} from {start} to {end}")
+                logger.info(f"Loading data for {symbol}.{venue_name}")
 
-                # Query data from catalog
-                # This assumes data is already in the catalog in Parquet format
-                # In a real implementation, you'd use catalog.bars() or similar
-                # For now, we'll log that data should be pre-loaded
-                logger.info(
-                    f"Data should be pre-loaded in catalog at: {self.config.data.data_path}"
-                )
+                # Create and add instrument
+                instrument = self._create_instrument(instrument_config)
+                self.engine.add_instrument(instrument)
+                logger.info(f"Added instrument: {instrument.id}")
+
+                # Find and load data file
+                # Expected format: yahoo_btcusd_1h.parquet or binance_btcusdt_1h.parquet
+                data_path = Path(self.config.data.data_path)
+
+                # Try different file patterns
+                possible_files = [
+                    data_path / f"{venue_name.lower()}_{symbol.lower()}_*.parquet",
+                    data_path / f"*_{symbol.lower()}_*.parquet",
+                    data_path / f"*{symbol.lower()}*.parquet",
+                ]
+
+                data_file = None
+                for pattern in possible_files:
+                    matches = list(data_path.glob(pattern.name))
+                    if matches:
+                        data_file = matches[0]
+                        break
+
+                if data_file is None:
+                    logger.warning(f"No data file found for {symbol} in {data_path}")
+                    logger.warning(f"Tried patterns: {[str(p) for p in possible_files]}")
+                    logger.info(f"Available files: {list(data_path.glob('*.parquet'))}")
+                    continue
+
+                logger.info(f"Loading data from: {data_file}")
+
+                # Load Parquet file
+                df = pd.read_parquet(data_file)
+                logger.info(f"Loaded {len(df)} rows from {data_file.name}")
+
+                # Ensure timestamp column exists and is datetime
+                if 'timestamp' not in df.columns:
+                    if 'date' in df.columns:
+                        df['timestamp'] = pd.to_datetime(df['date'])
+                    elif df.index.name == 'timestamp' or df.index.name == 'date':
+                        df = df.reset_index()
+                        df['timestamp'] = pd.to_datetime(df['timestamp'])
+                    else:
+                        raise ValueError(f"No timestamp column found in {data_file}")
+
+                # Ensure timestamp is datetime
+                df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+                # Filter by date range
+                start = pd.to_datetime(self.config.data.start_date)
+                end = pd.to_datetime(self.config.data.end_date)
+                df = df[(df['timestamp'] >= start) & (df['timestamp'] <= end)]
+
+                logger.info(f"Filtered to {len(df)} rows between {start.date()} and {end.date()}")
+
+                if len(df) == 0:
+                    logger.warning(f"No data found for {symbol} in date range")
+                    continue
+
+                # Convert DataFrame to NautilusTrader bars
+                bars = self._convert_df_to_bars(df, instrument, self.config.data.bar_type)
+                logger.info(f"Converted {len(bars)} bars for {instrument.id}")
+
+                # Add bars to engine
+                self.engine.add_data(bars)
+                logger.info(f"✅ Added {len(bars)} bars to engine for {symbol}")
 
             logger.info("Historical data loaded successfully")
 
         except Exception as e:
             logger.error(f"Failed to load data: {e}", exc_info=True)
             raise
+
+    def _convert_df_to_bars(self, df: pd.DataFrame, instrument: CurrencyPair, bar_spec_str: str) -> list[Bar]:
+        """
+        Convert DataFrame to NautilusTrader Bar objects.
+
+        Args:
+            df: DataFrame with OHLCV data.
+            instrument: Instrument for the bars.
+            bar_spec_str: Bar specification string (e.g., "1-HOUR").
+
+        Returns:
+            List of Bar objects.
+        """
+        # Parse bar specification
+        # Expected format: "1-HOUR", "5-MINUTE", etc.
+        parts = bar_spec_str.split("-")
+        if len(parts) != 2:
+            # Default to 1-HOUR if parsing fails
+            step = 1
+            aggregation = BarAggregation.HOUR
+        else:
+            step = int(parts[0])
+            aggregation_str = parts[1].upper()
+            aggregation_map = {
+                "SECOND": BarAggregation.SECOND,
+                "MINUTE": BarAggregation.MINUTE,
+                "HOUR": BarAggregation.HOUR,
+                "DAY": BarAggregation.DAY,
+            }
+            aggregation = aggregation_map.get(aggregation_str, BarAggregation.HOUR)
+
+        # Create bar type
+        bar_spec = BarSpecification(
+            step=step,
+            aggregation=aggregation,
+            price_type=PriceType.LAST,
+        )
+
+        bar_type = BarType(
+            instrument_id=instrument.id,
+            bar_spec=bar_spec,
+            aggregation_source=AggregationSource.EXTERNAL,
+        )
+
+        # Convert each row to a Bar
+        bars = []
+        for _, row in df.iterrows():
+            # Convert timestamp to nanoseconds
+            ts = int(pd.Timestamp(row['timestamp']).timestamp() * 1_000_000_000)
+
+            bar = Bar(
+                bar_type=bar_type,
+                open=Price(row['open'], instrument.price_precision),
+                high=Price(row['high'], instrument.price_precision),
+                low=Price(row['low'], instrument.price_precision),
+                close=Price(row['close'], instrument.price_precision),
+                volume=Quantity(row['volume'], 0),
+                ts_event=ts,
+                ts_init=ts,
+            )
+            bars.append(bar)
+
+        return bars
 
     def add_strategy(self, strategy_class, strategy_config) -> None:
         """
