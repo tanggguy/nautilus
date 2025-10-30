@@ -12,7 +12,7 @@ It provides common functionality for:
 
 from abc import ABC, abstractmethod
 from decimal import Decimal
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 
 from nautilus_trader.config import StrategyConfig
 from nautilus_trader.core.datetime import unix_nanos_to_dt
@@ -31,7 +31,7 @@ class BaseStrategyConfig(StrategyConfig):
 
     Attributes:
         instrument_id: The instrument to trade (e.g., 'BTCUSDT.BINANCE').
-        bar_type: The bar type to subscribe to (e.g., 'BTCUSDT.BINANCE-1-MINUTE-LAST-EXTERNAL').
+        bar_type: The bar type to subscribe to (BarType object or string).
         trade_size: Base trade size in quote currency (e.g., Decimal("100") for $100).
         max_position_size: Maximum position size as multiple of trade_size (default: 1).
         use_stop_loss: Enable stop loss orders (default: True).
@@ -43,7 +43,7 @@ class BaseStrategyConfig(StrategyConfig):
     """
 
     instrument_id: str
-    bar_type: str
+    bar_type: Union[str, BarType]
     trade_size: Decimal = Decimal("100")
     max_position_size: int = 1
     use_stop_loss: bool = True
@@ -81,8 +81,11 @@ class BaseStrategy(Strategy, ABC):
 
         # Configuration
         self.instrument_id = InstrumentId.from_str(config.instrument_id)
-        # Convert bar_type string to BarType object
-        self.bar_type = BarType.from_str(config.bar_type) if isinstance(config.bar_type, str) else config.bar_type
+        # Accept BarType object directly
+        if isinstance(config.bar_type, BarType):
+            self.bar_type = config.bar_type
+        else:
+            raise TypeError(f"bar_type must be a BarType object, got {type(config.bar_type)}")
         self.trade_size = config.trade_size
         self.max_position_size = config.max_position_size
 

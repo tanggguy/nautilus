@@ -16,8 +16,9 @@ from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
+from nautilus_trader.model.data import BarSpecification, BarType
+from nautilus_trader.model.enums import AggregationSource, BarAggregation, PriceType
+from nautilus_trader.model.identifiers import InstrumentId
 
 from configs.backtest_config import BacktestConfig, create_crypto_config
 from execution.backtest_runner import BacktestRunner
@@ -192,9 +193,77 @@ def parse_strategy_params(params_list):
     return params
 
 
-def create_strategy_config(
-    strategy_name, symbol, venue, interval, trade_size, custom_params
-):
+def parse_interval(interval_str):
+    """
+    Parse interval string to BarAggregation and step.
+
+    Args:
+        interval_str: Interval string like "1h", "5m", "1d", "30s"
+
+    Returns:
+        tuple: (step, BarAggregation)
+    """
+    import re
+
+    # Parse interval string
+    match = re.match(r"(\d+)([smhd])", interval_str.lower())
+    if not match:
+        raise ValueError(f"Invalid interval format: {interval_str}")
+
+    step = int(match.group(1))
+    unit = match.group(2)
+
+    # Map unit to BarAggregation
+    unit_map = {
+        "s": BarAggregation.SECOND,
+        "m": BarAggregation.MINUTE,
+        "h": BarAggregation.HOUR,
+        "d": BarAggregation.DAY,
+    }
+
+    aggregation = unit_map.get(unit)
+    if aggregation is None:
+        raise ValueError(f"Invalid time unit: {unit}")
+
+    return step, aggregation
+
+
+def create_bar_type(symbol, venue, interval):
+    """
+    Create a BarType object.
+
+    Args:
+        symbol: Trading symbol.
+        venue: Trading venue.
+        interval: Bar interval (e.g., "1h", "5m").
+
+    Returns:
+        BarType object.
+    """
+    # Parse interval
+    step, aggregation = parse_interval(interval)
+
+    # Create instrument ID
+    instrument_id = InstrumentId.from_str(f"{symbol}.{venue}")
+
+    # Create bar specification
+    bar_spec = BarSpecification(
+        step=step,
+        aggregation=aggregation,
+        price_type=PriceType.LAST,
+    )
+
+    # Create bar type
+    bar_type = BarType(
+        instrument_id=instrument_id,
+        bar_spec=bar_spec,
+        aggregation_source=AggregationSource.EXTERNAL,
+    )
+
+    return bar_type
+
+
+def create_strategy_config(strategy_name, symbol, venue, interval, trade_size, custom_params):
     """
     Create strategy configuration.
 
@@ -213,7 +282,7 @@ def create_strategy_config(
 
     # Create instrument ID and bar type
     instrument_id = f"{symbol}.{venue}"
-    bar_type = f"{symbol}.{venue}-{interval.upper()}-LAST-EXTERNAL"
+    bar_type = create_bar_type(symbol, venue, interval)
 
     # Base parameters
     params = {
