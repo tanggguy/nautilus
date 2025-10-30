@@ -16,6 +16,9 @@ from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
 
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+
 from configs.backtest_config import BacktestConfig, create_crypto_config
 from execution.backtest_runner import BacktestRunner
 from strategies import (
@@ -28,6 +31,7 @@ from strategies import (
     MeanReversionConfig,
     MeanReversionStrategy,
 )
+
 from utils.logging_config import get_logger, setup_logging
 
 # Setup logging
@@ -188,7 +192,9 @@ def parse_strategy_params(params_list):
     return params
 
 
-def create_strategy_config(strategy_name, symbol, venue, interval, trade_size, custom_params):
+def create_strategy_config(
+    strategy_name, symbol, venue, interval, trade_size, custom_params
+):
     """
     Create strategy configuration.
 

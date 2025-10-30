@@ -1,0 +1,163 @@
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 16:49:08 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 16:50:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:50:55 | INFO     | __main__                       | __init__             | DataDownloader initialized | Output: data
+2025-10-30 16:50:55 | INFO     | __main__                       | download_yahoo_finance | Downloading BTC-USD from Yahoo Finance
+2025-10-30 16:50:55 | INFO     | __main__                       | download_yahoo_finance | Period: 2024-01-01 to 2024-03-01 | Interval: 1h
+2025-10-30 16:50:56 | INFO     | __main__                       | download_yahoo_finance | Downloaded 1440 bars for BTC-USD
+2025-10-30 16:50:56 | ERROR    | __main__                       | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:50:56 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 16:51:11 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:51:11 | INFO     | __main__                       | __init__             | DataDownloader initialized | Output: data
+2025-10-30 16:51:11 | INFO     | __main__                       | download_yahoo_finance | Downloading BTC-USD from Yahoo Finance
+2025-10-30 16:51:11 | INFO     | __main__                       | download_yahoo_finance | Period: 2024-01-01 to 2024-03-01 | Interval: 1d
+2025-10-30 16:51:12 | INFO     | __main__                       | download_yahoo_finance | Downloaded 60 bars for BTC-USD
+2025-10-30 16:51:12 | ERROR    | __main__                       | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:51:12 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 16:51:45 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 16:51:45 | INFO     | __main__                       | __init__             | DataDownloader initialized | Output: data
+2025-10-30 16:51:45 | INFO     | __main__                       | download_yahoo_finance | Downloading ETH-USD from Yahoo Finance
+2025-10-30 16:51:45 | INFO     | __main__                       | download_yahoo_finance | Period: 2024-01-01 to 2024-02-01 | Interval: 1h
+2025-10-30 16:51:45 | INFO     | __main__                       | download_yahoo_finance | Downloaded 744 bars for ETH-USD
+2025-10-30 16:51:45 | ERROR    | __main__                       | download_yahoo_finance | Failed to download ETH-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:51:45 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | NAUTILUS BACKTEST RUNNER
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | ================================================================================
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | Creating backtest configuration
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | Creating strategy configuration
+2025-10-30 17:00:55 | INFO     | __main__                       | create_strategy_config | Creating ema_cross config with parameters:
+2025-10-30 17:00:55 | INFO     | __main__                       | create_strategy_config |   instrument_id: BTCUSDT.BINANCE
+2025-10-30 17:00:55 | INFO     | __main__                       | create_strategy_config |   bar_type: BTCUSDT.BINANCE-1H-LAST-EXTERNAL
+2025-10-30 17:00:55 | INFO     | __main__                       | create_strategy_config |   trade_size: 100.0
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | Initializing backtest runner
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Logging system initialized
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Log level: INFO
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Log directory: C:\Users\saill\Desktop\nautilus\logs
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | Console output: True
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | File output: True
+2025-10-30 17:00:55 | INFO     | root                           | setup_logging        | ================================================================================
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | __init__             | BacktestRunner initialized
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | __init__             | Backtest: BTCUSDT Crypto Backtest
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | __init__             | Venue: BINANCE
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | __init__             | Instruments: ['BTCUSDT']
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | __init__             | Period: 2024-01-01 to 2024-03-01
+2025-10-30 17:00:55 | INFO     | __main__                       | main                 | Initializing backtest engine
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | initialize_catalog   | Initializing data catalog: data
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | initialize_catalog   | Data catalog initialized successfully
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | initialize_engine    | Initializing backtest engine
+2025-10-30 17:00:55 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:00:55 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | cleanup              | Cleaning up backtest runner
+2025-10-30 17:00:55 | INFO     | execution.backtest_runner      | cleanup              | Cleanup complete
