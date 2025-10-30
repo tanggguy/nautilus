@@ -16,7 +16,7 @@ from typing import Dict, Optional
 
 from nautilus_trader.config import StrategyConfig
 from nautilus_trader.core.datetime import unix_nanos_to_dt
-from nautilus_trader.model.data import Bar
+from nautilus_trader.model.data import Bar, BarType
 from nautilus_trader.model.enums import OrderSide, OrderType, TimeInForce
 from nautilus_trader.model.identifiers import InstrumentId
 from nautilus_trader.model.instruments import Instrument
@@ -81,9 +81,13 @@ class BaseStrategy(Strategy, ABC):
 
         # Configuration
         self.instrument_id = InstrumentId.from_str(config.instrument_id)
-        self.bar_type = config.bar_type
+        # Convert bar_type string to BarType object
+        self.bar_type = BarType.from_str(config.bar_type) if isinstance(config.bar_type, str) else config.bar_type
         self.trade_size = config.trade_size
         self.max_position_size = config.max_position_size
+
+        # Instrument (will be initialized in on_start)
+        self.instrument: Optional[Instrument] = None
 
         # Risk management
         self.use_stop_loss = config.use_stop_loss
@@ -113,7 +117,17 @@ class BaseStrategy(Strategy, ABC):
 
         Subscribes to bar data and logs strategy initialization.
         """
+        # Get instrument from cache
+        self.instrument = self.cache.instrument(self.instrument_id)
+        if self.instrument is None:
+            self.log.error(f"Could not find instrument for {self.instrument_id}")
+            self.stop()
+            return
+
+        # Subscribe to bar data
         self.subscribe_bars(self.bar_type)
+
+        # Log strategy initialization
         self.log.info("=" * 80)
         self.log.info(f"Strategy: {self.__class__.__name__}")
         self.log.info(f"Instrument: {self.instrument_id}")
