@@ -1,0 +1,497 @@
+2025-10-30 16:50:56 | ERROR    | __main__                       | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:50:56 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 16:51:12 | ERROR    | __main__                       | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:51:12 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 16:51:45 | ERROR    | __main__                       | download_yahoo_finance | Failed to download ETH-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 16:51:45 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 17:00:55 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:00:55 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:05:46 | ERROR    | scripts.data_download          | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 17:05:46 | ERROR    | __main__                       | main                 | Failed to download data. Exiting.
+2025-10-30 17:12:38 | ERROR    | scripts.data_download          | download_yahoo_finance | Failed to download BTC-USD: 'timestamp'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'timestamp'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\Users\saill\Desktop\nautilus\scripts\data_download.py", line 112, in download_yahoo_finance
+    f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+                   ~~^^^^^^^^^^^^^
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'timestamp'
+2025-10-30 17:12:38 | ERROR    | __main__                       | main                 | Failed to download data. Exiting.
+2025-10-30 17:18:37 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:18:37 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:19:14 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:19:14 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:21:52 | ERROR    | yfinance                       | history              | $APPL: possibly delisted; no price data found  (1h 2024-01-01 -> 2024-03-01)
+2025-10-30 17:21:52 | ERROR    | __main__                       | download_yahoo_finance | No data returned for APPL
+2025-10-30 17:21:52 | ERROR    | __main__                       | main                 | Failed to download data
+2025-10-30 17:26:16 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:26:16 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:55:42 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 17:55:42 | ERROR    | __main__                       | main                 | Backtest failed: Unexpected keyword argument 'logging_config'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 114, in initialize_engine
+    engine_config = BacktestEngineConfig(
+        trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
+        logging_config={"bypass": False},  # Use our logging
+    )
+TypeError: Unexpected keyword argument 'logging_config'
+2025-10-30 18:00:41 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: 'dict' object has no attribute 'clear_log_file'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 122, in initialize_engine
+    self.engine = BacktestEngine(config=engine_config)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "nautilus_trader/backtest/engine.pyx", line 250, in nautilus_trader.backtest.engine.BacktestEngine.__init__
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\nautilus_trader\system\kernel.py", line 179, in __init__
+    if logging.clear_log_file and logging.log_directory and logging.log_file_name:
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'clear_log_file'
+2025-10-30 18:00:41 | ERROR    | __main__                       | main                 | Backtest failed: 'dict' object has no attribute 'clear_log_file'
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 122, in initialize_engine
+    self.engine = BacktestEngine(config=engine_config)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "nautilus_trader/backtest/engine.pyx", line 250, in nautilus_trader.backtest.engine.BacktestEngine.__init__
+  File "C:\Users\saill\Desktop\nautilus\.venv\Lib\site-packages\nautilus_trader\system\kernel.py", line 179, in __init__
+    if logging.clear_log_file and logging.log_directory and logging.log_file_name:
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'clear_log_file'
+2025-10-30 18:07:44 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:07:44 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:09:35 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:09:35 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:18:04 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:18:04 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:20:45 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 18:20:45 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 18:23:15 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: __init__() takes exactly 5 positional arguments (1 given)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency(currency))
+                  ~~~~~~~~^^^^^^^^^^
+  File "nautilus_trader/model/objects.pyx", line 1394, in nautilus_trader.model.objects.Currency.__init__
+TypeError: __init__() takes exactly 5 positional arguments (1 given)
+2025-10-30 18:23:15 | ERROR    | __main__                       | main                 | Backtest failed: __init__() takes exactly 5 positional arguments (1 given)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency(currency))
+                  ~~~~~~~~^^^^^^^^^^
+  File "nautilus_trader/model/objects.pyx", line 1394, in nautilus_trader.model.objects.Currency.__init__
+TypeError: __init__() takes exactly 5 positional arguments (1 given)
+2025-10-30 18:24:29 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 18:24:29 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 19:33:32 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 19:33:32 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got str)
+2025-10-30 19:35:28 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 19:35:28 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 20:37:27 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 20:37:27 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 127, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<6 lines>...
+        ],
+        ^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 21:04:23 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:04:23 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 133, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:12:35 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:12:35 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:14:29 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:14:29 | ERROR    | __main__                       | main                 | Backtest failed: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 158, in initialize_engine
+    Money(amount, Currency)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: Argument 'currency' has incorrect type (expected nautilus_trader.model.objects.Currency, got type)
+2025-10-30 21:20:31 | ERROR    | execution.backtest_runner      | initialize_engine    | Failed to initialize backtest engine: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 154, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        starting_balances=starting_balances,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required
+2025-10-30 21:20:31 | ERROR    | __main__                       | main                 | Backtest failed: an integer is required
+Traceback (most recent call last):
+  File "C:\Users\saill\Desktop\nautilus\scripts\run_backtest.py", line 278, in main
+    runner.initialize_engine()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\saill\Desktop\nautilus\execution\backtest_runner.py", line 154, in initialize_engine
+    self.engine.add_venue(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        venue=venue,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        starting_balances=starting_balances,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "nautilus_trader/backtest/engine.pyx", line 489, in nautilus_trader.backtest.engine.BacktestEngine.add_venue
+TypeError: an integer is required

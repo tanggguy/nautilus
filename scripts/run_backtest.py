@@ -32,6 +32,7 @@ from strategies import (
     MeanReversionConfig,
     MeanReversionStrategy,
 )
+
 from utils.logging_config import get_logger, setup_logging
 
 # Setup logging

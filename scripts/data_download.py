@@ -19,6 +19,8 @@ from typing import Optional
 import pandas as pd
 import yfinance as yf
 
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 from utils.logging_config import get_logger, setup_logging
 
 # Setup logging
@@ -114,7 +116,9 @@ class DataDownloader:
                 return None
 
             logger.info(f"Downloaded {len(df)} bars for {symbol}")
-            logger.info(f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}")
+            logger.info(
+                f"Date range: {df['timestamp'].min()} to {df['timestamp'].max()}"
+            )
 
             return df
 
@@ -153,10 +157,14 @@ class DataDownloader:
             # In production, use binance.client.Client()
             yf_symbol = symbol.replace("USDT", "-USD")
             logger.info(f"Using Yahoo Finance as fallback: {yf_symbol}")
-            return self.download_yahoo_finance(yf_symbol, start_date, end_date, interval)
+            return self.download_yahoo_finance(
+                yf_symbol, start_date, end_date, interval
+            )
 
         except Exception as e:
-            logger.error(f"Failed to download {symbol} from Binance: {e}", exc_info=True)
+            logger.error(
+                f"Failed to download {symbol} from Binance: {e}", exc_info=True
+            )
             return None
 
     def save_to_parquet(
@@ -179,7 +187,9 @@ class DataDownloader:
             Path to saved file, or None if save fails.
         """
         # Create filename
-        filename = f"{venue.lower()}_{symbol.replace('-', '').lower()}_{interval}.parquet"
+        filename = (
+            f"{venue.lower()}_{symbol.replace('-', '').lower()}_{interval}.parquet"
+        )
         filepath = self.output_dir / filename
 
         logger.info(f"Saving data to: {filepath}")
@@ -194,7 +204,9 @@ class DataDownloader:
             )
 
             file_size = filepath.stat().st_size / 1024 / 1024  # MB
-            logger.info(f"Saved successfully | Size: {file_size:.2f} MB | Rows: {len(df)}")
+            logger.info(
+                f"Saved successfully | Size: {file_size:.2f} MB | Rows: {len(df)}"
+            )
 
             return filepath
 
@@ -231,7 +243,9 @@ class DataDownloader:
             df.to_csv(filepath, index=False)
 
             file_size = filepath.stat().st_size / 1024 / 1024  # MB
-            logger.info(f"Saved successfully | Size: {file_size:.2f} MB | Rows: {len(df)}")
+            logger.info(
+                f"Saved successfully | Size: {file_size:.2f} MB | Rows: {len(df)}"
+            )
 
             return filepath
 
@@ -277,7 +291,7 @@ def main():
         epilog="""
 Examples:
   # Download Bitcoin data from Yahoo Finance
-  python data_download.py --symbol BTC-USD --start 2024-01-01 --end 2024-03-01 --interval 1h
+  python scripts/data_download.py --symbol BTC-USD --start 2024-01-01 --end 2024-03-01 --interval 1h
 
   # Download from Binance
   python data_download.py --symbol BTCUSDT --venue binance --start 2024-01-01 --end 2024-03-01
@@ -286,7 +300,7 @@ Examples:
   python data_download.py --symbol AAPL --start 2023-01-01 --end 2024-01-01 --interval 1d
 
   # Save as CSV instead of Parquet
-  python data_download.py --symbol ETH-USD --start 2024-01-01 --end 2024-02-01 --format csv
+  python scripts/data_download.py --symbol ETH-USD --start 2024-01-01 --end 2024-02-01 --format csv
         """,
     )
 

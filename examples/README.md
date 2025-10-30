@@ -51,7 +51,7 @@ python scripts/data_download.py \
   --interval 1h \
   --output data
 ```
-
+python scripts/data_download.py --symbol AIR.PA --start 2024-01-01 --end 2024-03-01 --interval 1h
 **Expected output**:
 - File: `data/yahoo_btcusd_1h.parquet`
 - ~1400 bars (2 months × 30 days × 24 hours)
@@ -85,7 +85,7 @@ python scripts/run_backtest.py \
   --trade-size 1000 \
   --params fast_period=10 slow_period=30
 ```
-
+python scripts/run_backtest.py --strategy ema_cross --symbol BTCUSDT --start 2024-01-01 --end 2024-03-01 --interval 1h --capital 10000
 **Results saved to**: `results/backtests/ema_cross_btc_<timestamp>.json`
 
 ---

@@ -11,7 +11,7 @@ This is a trend-following strategy that works best in trending markets.
 
 from decimal import Decimal
 
-from nautilus_trader.indicators.average.ema import ExponentialMovingAverage
+from nautilus_trader.indicators.averages import ExponentialMovingAverage
 from nautilus_trader.model.data import Bar
 from nautilus_trader.model.enums import OrderSide
 

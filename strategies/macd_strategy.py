@@ -1,8 +1,7 @@
-
 from decimal import Decimal
 from nautilus_trader.config import StrategyConfig
 from nautilus_trader.core.data import Data
-from nautilus_trader.indicators.macd import MovingAverageConvergenceDivergence
+from nautilus_trader.indicators.trend import MovingAverageConvergenceDivergence
 from nautilus_trader.model.data import Bar
 from nautilus_trader.model.enums import OrderSide, TimeInForce
 from nautilus_trader.model.identifiers import InstrumentId
@@ -12,6 +11,7 @@ from nautilus_trader.trading.strategy import Strategy
 
 class MACDStrategyConfig(StrategyConfig):
     """Configuration pour la stratégie MACD"""
+
     instrument_id: str
     bar_type: str
     fast_period: int = 12
@@ -82,7 +82,9 @@ class MACDStrategy(Strategy):
         )
         self.submit_order(order)
         self.position_opened = True
-        self.log.info(f"📈 ACHAT: MACD={self.macd.value:.4f}, Signal={self.macd.signal:.4f}")
+        self.log.info(
+            f"📈 ACHAT: MACD={self.macd.value:.4f}, Signal={self.macd.signal:.4f}"
+        )
 
     def sell(self):
         """Fermer la position"""
@@ -94,7 +96,9 @@ class MACDStrategy(Strategy):
         )
         self.submit_order(order)
         self.position_opened = False
-        self.log.info(f"📉 VENTE: MACD={self.macd.value:.4f}, Signal={self.macd.signal:.4f}")
+        self.log.info(
+            f"📉 VENTE: MACD={self.macd.value:.4f}, Signal={self.macd.signal:.4f}"
+        )
 
     def on_stop(self):
         """Actions à l'arrêt de la stratégie"""

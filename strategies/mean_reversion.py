@@ -17,7 +17,7 @@ Best suited for:
 
 from decimal import Decimal
 
-from nautilus_trader.indicators.bollinger_bands import BollingerBands
+from nautilus_trader.indicators.volatility import BollingerBands
 from nautilus_trader.model.data import Bar
 from nautilus_trader.model.enums import OrderSide
 
@@ -161,7 +161,9 @@ class MeanReversionStrategy(BaseStrategy):
         if not self.has_position():
             # Check for oversold condition (buy signal)
             if self._is_oversold(price, lower_band, band_width):
-                self._on_oversold_signal(bar, price, lower_band, middle_band, upper_band)
+                self._on_oversold_signal(
+                    bar, price, lower_band, middle_band, upper_band
+                )
 
             # Check for overbought condition (potential short, but we trade long only)
             elif self._is_overbought(price, upper_band, band_width):
@@ -194,7 +196,9 @@ class MeanReversionStrategy(BaseStrategy):
         threshold_price = lower_band + (band_width * self.oversold_threshold)
         return price <= threshold_price
 
-    def _is_overbought(self, price: float, upper_band: float, band_width: float) -> bool:
+    def _is_overbought(
+        self, price: float, upper_band: float, band_width: float
+    ) -> bool:
         """
         Check if price is overbought (above or near upper Bollinger Band).
 
@@ -210,7 +214,9 @@ class MeanReversionStrategy(BaseStrategy):
         threshold_price = upper_band - (band_width * self.overbought_threshold)
         return price >= threshold_price
 
-    def _should_exit_long(self, price: float, middle_band: float, upper_band: float) -> bool:
+    def _should_exit_long(
+        self, price: float, middle_band: float, upper_band: float
+    ) -> bool:
         """
         Determine if long position should be exited.
 
