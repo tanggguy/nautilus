@@ -13,9 +13,9 @@ from typing import Any, Dict, List, Optional
 from nautilus_trader.backtest.engine import BacktestEngine, BacktestEngineConfig
 from nautilus_trader.backtest.node import BacktestNode
 from nautilus_trader.config import ImportableStrategyConfig
-from nautilus_trader.model.currencies import USD
+from nautilus_trader.model.currencies import USD, USDT, EUR, BTC, ETH
 from nautilus_trader.model.identifiers import Venue
-from nautilus_trader.model.objects import Money
+from nautilus_trader.model.objects import Currency, Money
 from nautilus_trader.persistence.catalog import ParquetDataCatalog
 from nautilus_trader.config import LoggingConfig
 from nautilus_trader.model.objects import Currency
@@ -116,7 +116,6 @@ class BacktestRunner:
             # Create engine configuration
             engine_config = BacktestEngineConfig(
                 trader_id=f"BACKTESTER-{self.config.name.replace(' ', '_').upper()}",
-                logging=LoggingConfig(log_level="ERROR"),
             )
 
             # Create engine
@@ -124,6 +123,32 @@ class BacktestRunner:
 
             # Add venue
             venue = Venue(self.config.venue.name)
+
+            # Map currency strings to Currency objects
+            currency_map = {
+                "USD": USD,
+                "USDT": USDT,
+                "EUR": EUR,
+                "BTC": BTC,
+                "ETH": ETH,
+            }
+
+            # Create starting balances with proper Currency objects
+            starting_balances = []
+            for currency_str, amount in self.config.venue.starting_balances.items():
+                # Try to get from map, otherwise create from string
+                currency = currency_map.get(currency_str.upper())
+                if currency is None:
+                    # Create currency from string if not in map
+                    try:
+                        currency = Currency.from_str(currency_str.upper())
+                    except Exception as e:
+                        logger.warning(f"Could not create currency {currency_str}: {e}")
+                        # Default to USDT
+                        currency = USDT
+
+                starting_balances.append(Money(amount, currency))
+
             self.engine.add_venue(
                 venue=venue,
                 oms_type="NETTING",  # or "HEDGING"
@@ -133,6 +158,7 @@ class BacktestRunner:
                     Money(amount, Currency)
                     for currency, amount in self.config.venue.starting_balances.items()
                 ],
+                starting_balances=starting_balances,
             )
 
             # Add instruments
